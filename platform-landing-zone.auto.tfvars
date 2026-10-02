@@ -1,5 +1,5 @@
 /*
---- Built-in Replacements ---
+--- Built-in Replacements ----
 This file contains built-in replacements to avoid repeating the same hard-coded values.
 Replacements are denoted by the dollar-dollar curly braces token (e.g. $${starter_location_01}). The following details each built-in replacements that you can use:
 `starter_location_01`: This is the primary Azure location sourced from the `starter_locations` variable. This can be used to set the location of resources.
@@ -18,7 +18,7 @@ Replacements are denoted by the dollar-dollar curly braces token (e.g. $${starte
 You can define the Azure regions to use throughout the configuration.
 The first location will be used as the primary location, the second as the secondary location, and so on.
 */
-starter_locations = ["<region-1>"]
+starter_locations = ["norwayeast"]
 
 /*
 --- Custom Replacements ---
@@ -33,58 +33,59 @@ custom_replacements = {
   */
   names = {
     # Defender email security contact
-    defender_email_security_contact = "replace_me@replace_me.com"
+    defender_email_security_contact = "gb@hemensarzalihotmail.onmicrosoft.com"
 
     # Resource provisioning global connectivity
-    ddos_protection_plan_enabled = true
+    ddos_protection_plan_enabled = false
 
     # Resource provisioning primary connectivity
     primary_firewall_enabled                                             = true
-    primary_firewall_sku_tier                                            = "Premium"
+    primary_firewall_sku_tier                                            = "Standard"
     primary_firewall_management_ip_enabled                               = true
-    primary_virtual_network_gateway_express_route_enabled                = true
-    primary_virtual_network_gateway_express_route_hobo_public_ip_enabled = true
-    primary_virtual_network_gateway_vpn_enabled                          = true
+    primary_virtual_network_gateway_express_route_enabled                = false
+    primary_virtual_network_gateway_express_route_hobo_public_ip_enabled = false
+    primary_virtual_network_gateway_vpn_enabled                          = false
     primary_private_dns_zones_enabled                                    = true
     primary_private_dns_auto_registration_zone_enabled                   = true
     primary_private_dns_resolver_enabled                                 = true
     primary_bastion_enabled                                              = true
 
     # Resource group names
-    management_resource_group_name               = "rg-management-$${starter_location_01}"
-    connectivity_hub_primary_resource_group_name = "rg-hub-$${starter_location_01}"
-    dns_resource_group_name                      = "rg-hub-dns-$${starter_location_01}"
-    ddos_resource_group_name                     = "rg-hub-ddos-$${starter_location_01}"
-    asc_export_resource_group_name               = "rg-asc-export-$${starter_location_01}"
-    service_health_alerts_resource_group_name    = "rg-service-health-alerts-$${starter_location_01}"
+    management_resource_group_name               = "rg-management-d-01"
+    connectivity_hub_primary_resource_group_name = "rg-connectivity-net-d-01"
+    dns_resource_group_name                      = "rg-connectivity-dns-d-01"
+
+    ddos_resource_group_name                  = "rg-connectivity-ddos-d-01"
+    asc_export_resource_group_name            = "rg-asc-export-d-01"
+    service_health_alerts_resource_group_name = "rg-service-health-alerts-d-01"
 
     # Resource names management
-    log_analytics_workspace_name            = "law-management-$${starter_location_01}"
-    ddos_protection_plan_name               = "ddos-$${starter_location_01}"
-    ama_user_assigned_managed_identity_name = "uami-management-ama-$${starter_location_01}"
+    log_analytics_workspace_name            = "law-management-d-01"
+    ddos_protection_plan_name               = "ddos-connectivity-d-01"
+    ama_user_assigned_managed_identity_name = "uami-management-ama-d-01"
     dcr_change_tracking_name                = "dcr-change-tracking"
     dcr_defender_sql_name                   = "dcr-defender-sql"
     dcr_vm_insights_name                    = "dcr-vm-insights"
 
     # Resource names primary connectivity
-    primary_virtual_network_name                                 = "vnet-hub-$${starter_location_01}"
-    primary_firewall_name                                        = "fw-hub-$${starter_location_01}"
-    primary_firewall_policy_name                                 = "fwp-hub-$${starter_location_01}"
-    primary_firewall_public_ip_name                              = "pip-fw-hub-$${starter_location_01}"
-    primary_firewall_management_public_ip_name                   = "pip-fw-hub-mgmt-$${starter_location_01}"
-    primary_route_table_firewall_name                            = "rt-hub-fw-$${starter_location_01}"
-    primary_route_table_user_subnets_name                        = "rt-hub-std-$${starter_location_01}"
-    primary_virtual_network_gateway_express_route_name           = "vgw-hub-er-$${starter_location_01}"
-    primary_virtual_network_gateway_express_route_public_ip_name = "pip-vgw-hub-er-$${starter_location_01}"
-    primary_virtual_network_gateway_vpn_name                     = "vgw-hub-vpn-$${starter_location_01}"
-    primary_virtual_network_gateway_vpn_public_ip_name_1         = "pip-vgw-hub-vpn-$${starter_location_01}-001"
-    primary_virtual_network_gateway_vpn_public_ip_name_2         = "pip-vgw-hub-vpn-$${starter_location_01}-002"
-    primary_private_dns_resolver_name                            = "pdr-hub-dns-$${starter_location_01}"
-    primary_bastion_host_name                                    = "bas-hub-$${starter_location_01}"
-    primary_bastion_host_public_ip_name                          = "pip-bastion-hub-$${starter_location_01}"
+    primary_virtual_network_name                                 = "vnet-connectivity-net-d-01"
+    primary_firewall_name                                        = "fw-connectivity-net-d-01"
+    primary_firewall_policy_name                                 = "fwp-connectivity-net-d-01"
+    primary_firewall_public_ip_name                              = "pip-fw-connectivity-net-d-01"
+    primary_firewall_management_public_ip_name                   = "pip-fw-connectivity-mgmt-d-01"
+    primary_route_table_firewall_name                            = "rt-connectivity-fw-d-01"
+    primary_route_table_user_subnets_name                        = "rt-connectivity-std-d-01"
+    primary_virtual_network_gateway_express_route_name           = "vgw-connectivity-er-d-01"
+    primary_virtual_network_gateway_express_route_public_ip_name = "pip-vgw-connectivity-er-d-01"
+    primary_virtual_network_gateway_vpn_name                     = "vgw-connectivity-vpn-d-01"
+    primary_virtual_network_gateway_vpn_public_ip_name_1         = "pip-vgw-connectivity-vpn-d-01-001"
+    primary_virtual_network_gateway_vpn_public_ip_name_2         = "pip-vgw-connectivity-vpn-d-01-002"
+    primary_private_dns_resolver_name                            = "pdr-connectivity-dns-d-01"
+    primary_bastion_host_name                                    = "bas-connectivity-net-d-01"
+    primary_bastion_host_public_ip_name                          = "pip-bastion-connectivity-net-d-01"
 
     # Private DNS Zones primary
-    primary_auto_registration_zone_name = "$${starter_location_01}.azure.local"
+    primary_auto_registration_zone_name = "kubinox.azure.local"
 
     # IP Ranges Primary
     # Regional Address Space: 10.0.0.0/16
@@ -391,7 +392,7 @@ hub_virtual_networks = {
 
 # private_link_private_dns_zone_virtual_network_link_moved_blocks_enabled = true
 
-enable_telemetry = true
+enable_telemetry = false
 telemetry_additional_content = {
   deployed_by    = "alz-terraform-accelerator"
   correlation_id = "00000000-0000-0000-0000-000000000000"
